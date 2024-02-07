@@ -11,6 +11,7 @@ import WidgetWrapper from "components/WidgetWrapper";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setPost } from "state";
+import { colorTokens } from '/Users/hemanthkalyan/Downloads/Projects/Git/social-media/client/src/theme.js';
 
 const PostWidget = ({
   postId,
@@ -32,7 +33,7 @@ const PostWidget = ({
 
   const { palette } = useTheme();
   const main = palette.neutral.main;
-  const primary = palette.primary.main;
+  const red = colorTokens.red[500];
 
   const patchLike = async () => {
     const response = await fetch(`http://localhost:3001/posts/${postId}/like`, {
@@ -72,7 +73,7 @@ const PostWidget = ({
           <FlexBetween gap="0.3rem">
             <IconButton onClick={patchLike}>
               {isLiked ? (
-                <FavoriteOutlined sx={{ color: primary }} />
+                <FavoriteOutlined sx={{ color: red }} />
               ) : (
                 <FavoriteBorderOutlined />
               )}
